@@ -1,0 +1,66 @@
+@import "../../styles/common.css";
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.6);
+  }
+  50% {
+    transform: scale(.8);
+  }
+  100% {
+    transform: scale(1.6);
+  }
+}
+
+.board {
+  font-size: var(--board-font-size);
+  min-width: var(--board-width);
+  min-height: var(--board-height);
+
+  &.winner-found {
+    & .row > .square:hover {
+      background-color: unset;
+    }
+  }
+  & .row {
+    display: flex;
+    border-bottom: var(--board-border-size) solid var(--board-border-color);
+
+    &:last-child {
+      border-bottom: unset;
+
+      & .square {
+        height: calc(.3333 * var(--board-height) - var(--board-border-size));
+      }
+    }
+    & .square {
+      height: calc(.3333 * var(--board-height));
+      width: calc(33.33% + calc(var(--board-border-size) / 2));
+      cursor: pointer;
+      position: relative;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      border-left: var(--board-border-size) solid var(--board-border-color);
+      user-select: none;
+
+      &:first-child {
+        width: calc(33% - calc(var(--board-border-size) / 2));
+        border-left: unset;
+      }
+      &:hover {
+        background-color: var(--square-hover-color);
+      }
+      &.winner {
+        & .player {
+          z-index: 2;
+          color: var(--winner-color);
+          animation: pulse 1.5s infinite ease-in-out;
+        }
+      }
+    }
+  }
+}

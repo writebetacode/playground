@@ -1,0 +1,45 @@
+@import "../../styles/common.css";
+
+.header {
+  font-size: var(--header-font-size);
+  min-height: var(--header-height);
+  min-width: var(--header-width);
+  margin-bottom: 1em;
+
+  & .player-text {
+    height: calc(.5 * var(--header-height));
+    width: var(--header-width);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  & .replay-button {
+    height: calc(.5 * var(--header-height));
+    width: var(--header-width);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.hidden {
+      display: none;
+    }
+    & button {
+      height: 75%;
+      width: calc(.5 * var(--header-width));
+      border: 1px solid var(--header-btn-border-color);
+      border-radius: 5px;
+      cursor: pointer;
+
+      background: var(--header-btn-background);
+      color: var(--header-btn-color);
+      font-size: var(--header-btn-font-size);
+
+      &:hover {
+        filter: brightness(110%);
+        box-shadow: .1em .1em var(--header-btn-border-color);
+      }
+    }
+  }
+}
