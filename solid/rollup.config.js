@@ -15,7 +15,7 @@ export default {
   output: {
     dir: "build",
     entryFileNames: "bundle-[hash].js",
-    assetFileNames: "bundle-[hash].[ext]",
+    assetFileNames: "bundle-[name]-[hash].[ext]",
     format: "es",
     sourcemap: isProduction ? true : "inline"
   },

@@ -1,3 +1,11 @@
-app > header > nav > .link {
-  padding: 5px;
+@import "../../../../styles/common.css";
+
+#app {
+  & header {
+    & nav {
+      & .link {
+        padding: 20px;
+      }
+    }
+  }
 }

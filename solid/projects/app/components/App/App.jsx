@@ -1,7 +1,7 @@
 import { Router, pathIntegration, MatchRoute, NavLink } from "@rturnq/solid-router";
 import { lazy } from "solid-js";
 import { AppChooser } from "../AppChooser/AppChooser";
-// import "./App.css";
+import "./App.css";
 
 const TicTacToe = lazy(() => import("../../../tictactoe/components/TicTacToe/TicTacToe"));
 
