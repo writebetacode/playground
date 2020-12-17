@@ -23,8 +23,6 @@ export default {
   plugins: [
     !isProduction && solidHotLoader({
       include: [
-        "**/projects/app/*.jsx",
-        "**/projects/app/components/**/*.jsx",
         "**/projects/**/components/**/*.jsx"
       ]
     }),

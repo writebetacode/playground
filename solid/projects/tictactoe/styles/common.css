@@ -1,8 +1,2 @@
 @import "./variables.css";
-
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
+@import "../../../styles/common.css";
