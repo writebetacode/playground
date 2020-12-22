@@ -1,3 +1,5 @@
+@import "./variables.css";
+
 html {
   box-sizing: border-box;
 }
@@ -6,4 +8,11 @@ html {
 *:before,
 *:after {
   box-sizing: inherit;
+}
+
+html,
+body {
+  font-family: sans-serif;
+  color: #000;
+  background-color: #fcfcfcfc;
 }

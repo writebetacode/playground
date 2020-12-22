@@ -1,11 +1,33 @@
 @import "../../../../styles/common.css";
 
 #app {
-  & header {
-    & nav {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: auto 1fr auto;
+
+  & > header {
+    height: 2.5em;
+    background: red;
+
+    & > nav {
       & .link {
-        padding: 20px;
+        text-decoration: none;
+        cursor: pointer;
+        color: #000;
+
+        &.is-active {
+          border-bottom: 0.25em solid green;
+        }
       }
     }
+  }
+
+  & > main {
+    background: orange;
+  }
+
+  & > footer {
+    height: 2.5em;
+    background: blue;
   }
 }
