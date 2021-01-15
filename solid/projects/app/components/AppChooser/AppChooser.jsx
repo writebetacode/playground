@@ -18,5 +18,3 @@ export const AppChooser = (props) => {
     </div>
   );
 }
-
-export default AppChooser;

@@ -46,5 +46,3 @@ const Square = (props) => {
     </div>
   );
 }
-
-export default Board;
