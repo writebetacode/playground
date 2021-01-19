@@ -6,19 +6,16 @@
   grid-template-rows: auto 1fr auto;
 
   & > header {
-    height: 2.5em;
+    height: 2em;
+    font-size: 2em;
     background: red;
 
-    & > nav {
-      & .link {
-        text-decoration: none;
-        cursor: pointer;
-        color: #000;
-
-        &.is-active {
-          border-bottom: 0.25em solid green;
-        }
-      }
+    & .link {
+      text-decoration: none;
+      cursor: pointer;
+      color: var(--color-black);
+    }
+    & .name {
     }
   }
 
