@@ -1,8 +1,7 @@
 import { createMemo, splitProps } from "solid-js";
 import { useStoreon } from "@storeon/solidjs";
 import { BOARD_A_CLICK_SQUARE } from "../../store/board";
-
-import styles from './Board.module.css';
+import './Board.css';
 
 export const Board = () => {
   const [state, _] = useStoreon(),

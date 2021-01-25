@@ -1,8 +1,7 @@
 import { createMemo } from "solid-js";
 import { useStoreon } from "@storeon/solidjs";
 import { BOARD_V_DRAW, BOARD_A_RESET } from "../../store/board";
-
-import styles from "./Header.module.css";
+import "./Header.css";
 
 export const Header = () => {
   const [state, dispatch] = useStoreon();
