@@ -2,8 +2,6 @@ import { Link } from "@rturnq/solid-router";
 import "./AppChooser.css";
 
 export const AppChooser = (props) => {
-  console.log(props);
-
   return (
     <div class="app-chooser">
       <For each={props.apps}>{app =>

@@ -8,7 +8,8 @@ import injectHotCSS from "rollup-plugin-inject-hot-css";
 import { terser } from "rollup-plugin-terser";
 
 const html = require('@rollup/plugin-html'),
-  isProduction = process.env.NODE_ENV === "production";
+  isProduction = process.env.NODE_ENV === "production",
+  publicPath = process.env.PUBLIC_PATH || "/";
 
 export default {
   input: "main.js",
@@ -51,7 +52,7 @@ export default {
       compress: { global_defs: { storeonDevtools: false }}
     }),
     html({
-      publicPath: isProduction ? "/playground/" : "",
+      publicPath,
       meta: [
         { charset: 'utf-8' },
         {

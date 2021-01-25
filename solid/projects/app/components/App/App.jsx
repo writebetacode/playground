@@ -10,7 +10,7 @@ import { AppChooser } from "../AppChooser/AppChooser";
 import "./App.css";
 
 const TicTacToe = lazy(() =>
-  import("../../../tictactoe/components/TicTacToe/TicTacToe"));
+  import("../../../ttt/components/TicTacToe/TicTacToe"));
 
 const apps = [
   {
