@@ -5,26 +5,25 @@
   height: 100vh;
   grid-template-rows: auto 1fr auto;
 
-  & > header {
-    height: 2em;
-    font-size: 2em;
-    background: red;
-
-    & .link {
-      text-decoration: none;
-      cursor: pointer;
-      color: var(--color-black);
-    }
-    & .name {
-    }
-  }
-
-  & > main {
-    background: orange;
-  }
-
   & > footer {
-    height: 2.5em;
-    background: blue;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > a {
+      padding-top: 0.25rem;
+      text-decoration: none;
+      color: var(--color-black);
+      border-bottom: 0.15rem solid transparent;
+
+      &:hover {
+        border-bottom: 0.15rem solid var(--color-black);
+      }
+      &:focus,
+      &:active {
+        outline: 0;
+      }
+    }
   }
 }

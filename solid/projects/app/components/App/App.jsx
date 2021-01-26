@@ -1,12 +1,11 @@
 import { lazy } from "solid-js";
 import {
-  Link,
   MatchRoute,
   pathIntegration,
-  Router,
-  useRouter
+  Router
 } from "@rturnq/solid-router";
 import { AppChooser } from "../AppChooser/AppChooser";
+import { Header } from "../Header/Header";
 import "./App.css";
 
 const TicTacToe = lazy(() =>
@@ -23,10 +22,7 @@ const apps = [
 export const App = () => {
   return (
     <Router integration={pathIntegration()}>
-      <header>
-        <Link class="link" href="/">Apps</Link>
-        <span class="name">Page Name Goes Here</span>
-      </header>
+      <Header apps={apps} />
       <main>
         <Switch fallback={<AppChooser apps={apps} />}>
           <MatchRoute end>
@@ -38,7 +34,9 @@ export const App = () => {
         </Switch>
       </main>
       <footer>
-        footer content here
+        <a
+          href="https://github.com/writebetacode/playground"
+          target="blank">Github Repo</a>
       </footer>
     </Router>
   );

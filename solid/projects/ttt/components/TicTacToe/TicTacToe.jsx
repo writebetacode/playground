@@ -4,7 +4,7 @@ import { Header } from "../Header/Header";
 import { Board } from "../Board/Board";
 import "./TicTacToe.css";
 
-export function TicTacToe() {
+export const TicTacToe = () => {
   return (
     <StoreonProvider store={store}>
       <div class="tic-tac-toe">

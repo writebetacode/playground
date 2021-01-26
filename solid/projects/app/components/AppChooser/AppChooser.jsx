@@ -6,11 +6,9 @@ export const AppChooser = (props) => {
     <div class="app-chooser">
       <For each={props.apps}>{app =>
         <div class="card">
-          <div class="name">{app.name}</div>
-          <div class="desc">{app.description}</div>
-          <div class="link">
-            <Link href={`/${app.path}`}>Demo</Link>
-          </div>
+          <span class="name">{app.name}</span>
+          <p class="desc">{app.description}</p>
+          <Link class="link" href={`/${app.path}`}>Demo</Link>
         </div>
       }</For>
     </div>

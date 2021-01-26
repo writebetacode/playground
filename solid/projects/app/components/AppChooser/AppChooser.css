@@ -1,4 +1,34 @@
 @import "../../../../styles/common.css";
 
-#app > main .app-chooser {
+#app > main > .app-chooser {
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  overflow: hidden;
+  overflow-scroll: hidden;
+
+  & > .card {
+    display: flex;
+    flex-direction: column;
+    height: 10rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-black);
+    color: var(--color-gray);
+    margin-bottom: 1em;
+
+    & > .link {
+      text-decoration: none;
+      color: inherit;
+
+      & :focus,
+      & :active {
+        outline: 0;
+      }
+    }
+  }
 }
