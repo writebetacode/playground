@@ -1,16 +1,21 @@
-import { Link } from "@rturnq/solid-router";
+import { useRouter } from "@rturnq/solid-router";
 import "./AppChooser.css";
 
 export const AppChooser = (props) => {
+  const router = useRouter();
+
   return (
     <div class="app-chooser">
       <For each={props.apps}>{app =>
-        <div class="card">
+        <div class="card"
+          onClick={() => router.push("/"+app.path)}>
           <span class="name">{app.name}</span>
           <p class="desc">{app.description}</p>
-          <Link class="link" href={`/${app.path}`}>Demo</Link>
         </div>
       }</For>
     </div>
   );
 }
+
+
+// <Link class="link" href={`/${app.path}`}>Demo</Link>

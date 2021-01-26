@@ -5,6 +5,10 @@
   height: 100vh;
   grid-template-rows: auto 1fr auto;
 
+  & > main {
+    padding: 2rem;
+  }
+
   & > footer {
     height: 3rem;
     display: flex;

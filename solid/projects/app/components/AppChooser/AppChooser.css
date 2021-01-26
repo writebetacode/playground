@@ -2,33 +2,65 @@
 
 #app > main > .app-chooser {
   height: 100%;
-  padding: 2rem;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 
-  overflow: hidden;
-  overflow-scroll: hidden;
-
   & > .card {
     display: flex;
     flex-direction: column;
-    height: 10rem;
+    height: 12rem;
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     background: var(--color-black);
     color: var(--color-gray);
-    margin-bottom: 1em;
+    margin-bottom: 0.5rem;
+    padding: 0.75rem;
+    cursor: pointer;
+    user-select: none;
 
-    & > .link {
-      text-decoration: none;
-      color: inherit;
+    &:hover {
+      opacity: 0.5;
+    }
+    & > .name {
+      align-self: center;
+      font-size: 1.5em;
+    }
+  }
+}
 
-      & :focus,
-      & :active {
-        outline: 0;
-      }
+@media screen and (min-width: 960px) {
+  #app > main > .app-chooser {
+    justify-content: flex-start;
+
+    & > .card {
+      margin: 0 0.5rem 0.5rem 0;
+      width: calc(50% - 0.5rem);
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  #app > main > .app-chooser {
+    & > .card {
+      width: calc(33% - 0.5rem);
+    }
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  #app > main > .app-chooser {
+    & > .card {
+      width: calc(25% - 0.5rem);
+    }
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  #app > main > .app-chooser {
+    & > .card {
+      width: calc(20% - 0.5rem);
     }
   }
 }
