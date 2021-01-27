@@ -5,14 +5,14 @@ import { Board } from "../Board/Board";
 import "./TicTacToe.css";
 
 export const TicTacToe = () => {
-  return <>
+  return (
     <StoreonProvider store={store}>
       <div class="tic-tac-toe">
-        <Header/>
-        <Board/>
+        <Header />
+        <Board />
       </div>
     </StoreonProvider>
-  </>
+  );
 }
 
 export default TicTacToe;

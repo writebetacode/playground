@@ -9,7 +9,7 @@ import { Header } from "../Header/Header";
 import "./App.css";
 
 const TicTacToe = lazy(() =>
-  import("../../../ttt/components/TicTacToe/TicTacToe"));
+  import("../../../tictactoe/components/TicTacToe/TicTacToe"));
 
 const apps = [
   {

@@ -1,65 +1,65 @@
-@import "../../styles/common.css";
-
-
 @keyframes pulse {
   0% {
-    transform: scale(1.6);
+    transform: scale(1.2);
   }
   50% {
-    transform: scale(.8);
+    transform: scale(0.6);
   }
   100% {
-    transform: scale(1.6);
+    transform: scale(1.2);
   }
 }
 
-.board {
-  font-size: var(--board-font-size);
-  min-width: var(--board-width);
-  min-height: var(--board-height);
+.tic-tac-toe .board {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
 
   &.winner-found {
-    & .row > .square:hover {
-      background-color: unset;
+    & .row .square:hover {
+      background: inherit;
     }
   }
   & .row {
-    display: flex;
-    border-bottom: var(--board-border-size) solid var(--board-border-color);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 
-    &:last-child {
-      border-bottom: unset;
-
-      & .square {
-        height: calc(.3333 * var(--board-height) - var(--board-border-size));
-      }
+    &:not(:last-child) {
+      border-bottom: 0.75rem solid var(--color-black);
     }
     & .square {
-      height: calc(.3333 * var(--board-height));
-      width: calc(33.33% + calc(var(--board-border-size) / 2));
-      cursor: pointer;
-      position: relative;
-
+      font-size: 9rem;
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
+      padding-top: 2rem;
 
-      border-left: var(--board-border-size) solid var(--board-border-color);
-      user-select: none;
-
-      &:first-child {
-        width: calc(33% - calc(var(--board-border-size) / 2));
-        border-left: unset;
+      &:not(:last-child) {
+        border-right: 0.75rem solid var(--color-black);
       }
       &:hover {
-        background-color: var(--square-hover-color);
+        background: lightblue;
       }
       &.winner {
         & .player {
           z-index: 2;
-          color: var(--winner-color);
+          color: var(--color-green);
           animation: pulse 1.5s infinite ease-in-out;
         }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .tic-tac-toe .board .row {
+    &:not(:last-child) {
+      border-bottom: 1rem solid var(--color-black);
+    }
+    & .square {
+      font-size: 12rem;
+      &:not(:last-child) {
+        border-right: 1rem solid var(--color-black);
       }
     }
   }
