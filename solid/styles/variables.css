@@ -1,7 +1,11 @@
 :root {
-  --font-family: sans-serif;
+  --font-family: "Ubuntu", sans-serif;
 
-  --color-black: #000000;
-  --color-gray: #fcfcfcfc;
+  --color-black: #0d0d0d;
+  --color-gray: #eeeeee;
+  --color-slate: #708090;
   --color-green: #48e20b;
+  --color-blue: #b3e3f8;
+  --color-electric-blue: #616a7e;
+  --color-yellow: #faf782;
 }

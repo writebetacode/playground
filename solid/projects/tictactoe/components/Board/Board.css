@@ -1,3 +1,5 @@
+@import "../../../../styles/variables.css";
+
 @keyframes pulse {
   0% {
     transform: scale(1.2);
@@ -13,33 +15,29 @@
 .tic-tac-toe .board {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+  background: var(--color-black);
 
-  &.winner-found {
+  &:not(.winner-found) {
     & .row .square:hover {
-      background: inherit;
+      background: var(--color-slate);
+      color: var(--color-gray);
     }
   }
   & .row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    background: var(--color-black);
 
-    &:not(:last-child) {
-      border-bottom: 0.75rem solid var(--color-black);
-    }
     & .square {
       font-size: 9rem;
       display: flex;
       justify-content: center;
       align-items: center;
       cursor: pointer;
-      padding-top: 2rem;
+      background: var(--color-gray);
 
-      &:not(:last-child) {
-        border-right: 0.75rem solid var(--color-black);
-      }
-      &:hover {
-        background: lightblue;
-      }
       &.winner {
         & .player {
           z-index: 2;
@@ -52,14 +50,14 @@
 }
 
 @media screen and (min-width: 960px) {
-  .tic-tac-toe .board .row {
-    &:not(:last-child) {
-      border-bottom: 1rem solid var(--color-black);
-    }
-    & .square {
-      font-size: 12rem;
-      &:not(:last-child) {
-        border-right: 1rem solid var(--color-black);
+  .tic-tac-toe .board {
+    /* grid-gap: 1.5rem; */
+
+    & .row {
+      /* grid-gap: 1.5rem; */
+
+      & .square {
+        font-size: 12rem;
       }
     }
   }

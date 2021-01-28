@@ -1,5 +1,6 @@
+@import "../../../../styles/variables.css";
+
 .tic-tac-toe {
-  --font-family: "Ubuntu", sans-serif;
   height: 100%;
 
   display: grid;

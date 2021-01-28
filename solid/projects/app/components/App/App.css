@@ -1,12 +1,31 @@
-@import "../../../../styles/common.css";
+@import "../../../../styles/variables.css";
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  font-family: var(--font-family);
+  color: var(--color-black);
+  background: var(--color-gray);
+  padding: 0;
+  margin: 0;
+}
 
 #app {
   display: grid;
   height: 100vh;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: 3rem 1fr 3rem;
 
   & > main {
-    padding: 0.5rem 0.5rem 0 0.5rem;
+    padding: 1rem;
   }
 
   & > footer {
@@ -14,15 +33,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background: var(--color-electric-blue);
+    color: var(--color-yellow);
 
     & > a {
-      padding-top: 0.25rem;
+      padding: 0.5rem;
       text-decoration: none;
-      color: var(--color-black);
-      border-bottom: 0.15rem solid transparent;
+      border-bottom: 0.2rem solid transparent;
+      color: inherit;
 
       &:hover {
-        border-bottom: 0.15rem solid var(--color-black);
+        border-bottom: 0.2rem solid var(--color-yellow);
       }
       &:focus,
       &:active {

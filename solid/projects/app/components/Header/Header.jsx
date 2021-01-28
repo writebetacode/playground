@@ -16,11 +16,14 @@ export const Header = (props) => {
 
   return (
     <header>
-      <h1 style={{
+      <div class="apps-icon"
+      style={{
         "visibility": appName() === defaultName ? "hidden" : "visible",
       }}>
-        <Link class="link" href="/">Apps</Link>
-      </h1>
+        <h1>
+          <Link class="link" href="/">{defaultName}</Link>
+        </h1>
+      </div>
       <div class="name">
         <h1>{appName()}</h1>
       </div>

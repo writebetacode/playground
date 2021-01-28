@@ -4,17 +4,17 @@
   "description": "sample projects written with solid-js",
   "main": "main.js",
   "scripts": {
+    "dev": "npm start",
     "start": "nollup -c --hot --content-base build",
-    "build": "npm run cleanup && rollup -c --environment NODE_ENV:production",
-    "gh-pages-build": "env PUBLIC_PATH=playground/ npm run build",
-    "cleanup": "shx rm -rf build",
-    "dev": "npm start"
+    "prebuild": "shx rm -rf build",
+    "build": "rollup -c --environment NODE_ENV:production",
+    "build:github-pages": "env PUBLIC_PATH=playground/ npm run build"
   },
   "author": "Michael, Scholle",
   "license": "MIT",
   "dependencies": {
     "@babel/runtime": "^7.12.5",
-    "@rturnq/solid-router": "^0.2.2",
+    "@rturnq/solid-router": "0.2.2",
     "@storeon/solidjs": "^1.0.0",
     "babel-preset-solid": "^0.23.8",
     "core-js": "^3.8.3",
@@ -36,10 +36,10 @@
     "nollup": "^0.13.13",
     "open": "^7.3.1",
     "postcss-preset-env": "^6.7.0",
-    "rollup": "^2.38.0",
+    "rollup": "^2.38.1",
     "rollup-plugin-inject-hot-css": "^1.0.4",
     "rollup-plugin-solid-hot-loader": "^1.4.1",
-    "rollup-plugin-styles": "^3.14.0",
+    "rollup-plugin-styles": "^3.14.1",
     "rollup-plugin-terser": "^7.0.2",
     "shx": "^0.3.3"
   }

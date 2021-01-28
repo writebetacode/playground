@@ -16,6 +16,3 @@ export const AppChooser = (props) => {
     </div>
   );
 }
-
-
-// <Link class="link" href={`/${app.path}`}>Demo</Link>

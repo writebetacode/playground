@@ -1,27 +1,33 @@
-@import "../../../../styles/common.css";
+@import "../../../../styles/variables.css";
 
 #app > main > .app-chooser {
   height: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1.5rem;
+  align-content: start;
 
   & > .card {
     display: flex;
     flex-direction: column;
-    height: 12rem;
-    width: 100%;
     align-items: flex-start;
     justify-content: flex-start;
-    background: var(--color-black);
-    color: var(--color-gray);
-    margin-bottom: 0.5rem;
     padding: 0.75rem;
     cursor: pointer;
     user-select: none;
+    border: 0.1rem solid var(--color-slate);
+    border-radius: 0.5rem;
+    height: 15rem;
 
     &:hover {
-      opacity: 0.5;
+      color: var(--color-gray);
+      background: var(--color-slate);
+      border: 0.1rem solid var(--color-gray);
+      box-shadow: 0.25rem 0.5rem 0.75rem 0.25rem var(--color-electric-blue);
+
+      & .name {
+        color: var(--color-yellow);
+      }
     }
     & > .name {
       align-self: center;
@@ -32,35 +38,18 @@
 
 @media screen and (min-width: 960px) {
   #app > main > .app-chooser {
-    justify-content: flex-start;
-
-    & > .card {
-      margin: 0 0.5rem 0.5rem 0;
-      width: calc(50% - 0.5rem);
-    }
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  #app > main > .app-chooser {
-    & > .card {
-      width: calc(33% - 0.5rem);
-    }
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media screen and (min-width: 1500px) {
   #app > main > .app-chooser {
-    & > .card {
-      width: calc(25% - 0.5rem);
-    }
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media screen and (min-width: 1800px) {
   #app > main > .app-chooser {
-    & > .card {
-      width: calc(20% - 0.5rem);
-    }
+    grid-template-columns: repeat(4, 1fr);
   }
 }
