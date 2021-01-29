@@ -7,12 +7,9 @@
   grid-gap: 1.5rem;
   align-content: start;
 
-  & > .card {
+  & .card {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 0.75rem;
     cursor: pointer;
     user-select: none;
     border: 0.1rem solid var(--color-slate);
@@ -20,18 +17,30 @@
     height: 15rem;
 
     &:hover {
-      color: var(--color-gray);
       background: var(--color-slate);
       border: 0.1rem solid var(--color-gray);
       box-shadow: 0.25rem 0.5rem 0.75rem 0.25rem var(--color-electric-blue);
 
       & .name {
         color: var(--color-yellow);
+        border-bottom: 0.2rem solid var(--color-gray);
+      }
+      & .desc {
+        color: var(--color-white);
       }
     }
-    & > .name {
-      align-self: center;
-      font-size: 1.5em;
+    & .name {
+      display: flex;
+      justify-content: center;
+      padding: 0.75rem;
+      width: 100%;
+      border-bottom: 0.2rem solid var(--color-slate);
+      font-size: 2rem;
+    }
+    & .desc {
+      padding: 0.75rem;
+      font-size: 1.25rem;
+      text-align: justify;
     }
   }
 }

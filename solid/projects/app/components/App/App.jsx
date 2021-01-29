@@ -16,7 +16,8 @@ const apps = [
   {
     path: "tictactoe",
     name: "Tic Tac Toe",
-    description: "simple game of tic tac toe"
+    description: `Simple Tic Tac Toe implementation that has allowed me to test
+    out css grid / flexbox while creating something with solid-js and storeon.`
   }
 ];
 

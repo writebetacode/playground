@@ -27,28 +27,4 @@ body {
   & > main {
     padding: 1rem;
   }
-
-  & > footer {
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-electric-blue);
-    color: var(--color-yellow);
-
-    & > a {
-      padding: 0.5rem;
-      text-decoration: none;
-      border-bottom: 0.2rem solid transparent;
-      color: inherit;
-
-      &:hover {
-        border-bottom: 0.2rem solid var(--color-yellow);
-      }
-      &:focus,
-      &:active {
-        outline: 0;
-      }
-    }
-  }
 }
