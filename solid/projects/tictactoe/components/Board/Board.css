@@ -15,7 +15,7 @@
 .tic-tac-toe .board {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 1rem;
+  grid-gap: 0.75rem;
   background: var(--color-black);
 
   &:not(.winner-found) {
@@ -27,7 +27,7 @@
   & .row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 1rem;
+    grid-gap: 0.75rem;
     background: var(--color-black);
 
     & .square {
@@ -51,13 +51,27 @@
 
 @media screen and (min-width: 960px) {
   .tic-tac-toe .board {
-    /* grid-gap: 1.5rem; */
+    grid-gap: 1rem;
 
     & .row {
-      /* grid-gap: 1.5rem; */
+      grid-gap: 1rem;
 
       & .square {
         font-size: 12rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .tic-tac-toe .board {
+    grid-gap: 0.5rem;
+
+    & .row {
+      grid-gap: 0.5rem;
+
+      & .square {
+        font-size: 2rem;
       }
     }
   }

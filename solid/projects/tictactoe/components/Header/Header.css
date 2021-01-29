@@ -2,8 +2,59 @@
   & .header {
     height: 5rem;
 
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 150px;
     justify-content: center;
-    align-items: center;
+
+    &.winner-found {
+      & .player-text {
+        margin: 0;
+      }
+      & .replay-button {
+        visibility: visible;
+      }
+    }
+    & .player-text {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.75rem;
+      margin-right: -150px;
+    }
+    & .replay-button {
+      visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & button {
+        font-size: 1.5rem;
+        width: 10rem;
+        cursor: pointer;
+        border: 0.2rem solid var(--color-slate);
+        padding: 0.5rem;
+        border-radius: 0.2rem;
+
+        &:hover {
+          color: var(--color-yellow);
+          background: var(--color-slate);
+          border: 0.1rem solid var(--color-gray);
+          box-shadow: 0.2rem 0.2rem 0.2rem 0.2rem var(--color-electric-blue);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .tic-tac-toe {
+    & .header {
+      &.winner-found .player-text {
+        margin-right: -150px;
+      }
+      & .player-text {
+        font-size: 2rem;
+      }
+    }
   }
 }
