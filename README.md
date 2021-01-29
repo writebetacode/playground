@@ -2,4 +2,4 @@
 
 This is a mono-repo housing different projects that I am using to learn and play.
 
-## [Demo](https://writebetacode.github.io/playground/)
+## [Demo](https://playground.writebetacode.com)
