@@ -7,8 +7,7 @@
     "dev": "npm start",
     "start": "nollup -c --hot --content-base build",
     "prebuild": "shx rm -rf build",
-    "build": "rollup -c --environment NODE_ENV:production",
-    "build:github-pages": "env PUBLIC_PATH=playground/ npm run build"
+    "build": "rollup -c --environment NODE_ENV:production"
   },
   "author": "Michael, Scholle",
   "license": "MIT",

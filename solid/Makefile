@@ -9,4 +9,4 @@ start:
 .PHONY: build
 build:
 	make install
-	npm run build:github-pages
+	npm run build
