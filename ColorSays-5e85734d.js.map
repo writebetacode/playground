@@ -1,1 +1,0 @@
-{"version":3,"file":"ColorSays-5e85734d.js","sources":["../projects/colorsays/components/ColorSays/ColorSays.jsx"],"sourcesContent":["import \"./ColorSays.css\";\n\nexport const ColorSays = () => {\n  return (\n    <div class=\"color-memory\">\n\n    </div>\n  );\n};\n\nexport default ColorSays;\n"],"names":["ColorSays"],"mappings":"6FAEaA,EAAY"}
