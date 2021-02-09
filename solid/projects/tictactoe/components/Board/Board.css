@@ -12,7 +12,7 @@
   }
 }
 
-.tic-tac-toe .board {
+.tic-tac-toe > .board {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-gap: 0.75rem;

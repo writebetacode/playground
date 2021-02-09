@@ -1,0 +1,83 @@
+@import "../../../../styles/variables.css";
+
+.color-says {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  user-select: none;
+
+  & > .header {
+    height: 5rem;
+  }
+
+  & > .board {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 0.75rem;
+
+    & .square {
+      cursor: pointer;
+      &.disable-user-event {
+        cursor: unset;
+      }
+      &:nth-child(1) {
+        background: #296f00;
+        &.highlight,
+        &:not(.disable-user-event):hover,
+        &:not(.disable-user-event):active,
+        &:not(.disable-user-event):focus {
+          background: #1bd700;
+        }
+      }
+      &:nth-child(2) {
+        background: #a62c2c;
+        &.highlight,
+        &:not(.disable-user-event):hover,
+        &:not(.disable-user-event):active,
+        &:not(.disable-user-event):focus {
+          background: #ff0d0d;
+        }
+      }
+      &:nth-child(3) {
+        background: #fccc0c;
+        &.highlight,
+        &:not(.disable-user-event):hover,
+        &:not(.disable-user-event):active,
+        &:not(.disable-user-event):focus {
+          background: #ffff00;
+        }
+      }
+      &:nth-child(4) {
+        background: #293fa9;
+        &.highlight,
+        &:not(.disable-user-event):hover,
+        &:not(.disable-user-event):active,
+        &:not(.disable-user-event):focus {
+          background: #01bfff;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-height: 601px) {
+  .color-says {
+    & > .header {
+      height: 10rem;
+    }
+    & > .body {
+    }
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .color-says {
+    & > .header {
+      height: 10rem;
+    }
+    & > .board {
+      grid-gap: 1rem;
+    }
+  }
+}
