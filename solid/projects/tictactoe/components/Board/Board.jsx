@@ -1,10 +1,10 @@
 import { createMemo, splitProps } from "solid-js";
-import { useStoreon } from "@storeon/solidjs";
-import { BOARD_A_CLICK_SQUARE } from "../../store/board";
+import { BOARD_A_CLICK_SQUARE, useBoard } from "../../store/board";
 import './Board.css';
 
 export const Board = () => {
-  const [state, _] = useStoreon(),
+  console.log('inside');
+  const [state, _] = useBoard(),
   classes = createMemo(() => [
     "board",
     state.board.winner === "" ? "" : "winner-found"
@@ -30,9 +30,9 @@ const Row = (props) => {
 }
 
 const Square = (props) => {
-  const [_, dispatch] = useStoreon(),
+  const [_, methods] = useBoard(),
     {yIndex, xIndex} = splitProps(props, ["yIndex", "xIndex"]).shift(),
-    clickSquare = () => dispatch(BOARD_A_CLICK_SQUARE, [yIndex(), xIndex()]),
+    clickSquare = () => methods[BOARD_A_CLICK_SQUARE](yIndex(), xIndex()),
     classes = createMemo(() => [
       "square",
       props.square.isWinner ? "winner" : "",

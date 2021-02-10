@@ -1,10 +1,9 @@
 import { createMemo } from "solid-js";
-import { useStoreon } from "@storeon/solidjs";
-import { BOARD_V_DRAW, BOARD_A_RESET } from "../../store/board";
+import { BOARD_V_DRAW, BOARD_A_RESET, useBoard } from "../../store/board";
 import "./Header.css";
 
 export const Header = () => {
-  const [state, dispatch] = useStoreon(),
+  const [state, methods] = useBoard(),
     playerText = createMemo(() => {
       if (state.board.winner === "") {
         return `${state.board.currentPlayer}'s move`;
@@ -20,7 +19,7 @@ export const Header = () => {
       "header",
       state.board.winner.length ? "winner-found" : "",
     ]),
-    resetBoard = () => dispatch(BOARD_A_RESET);
+    resetBoard = () => methods[BOARD_A_RESET]();
 
   return (
     <div class={headerClasses().join(" ")}>

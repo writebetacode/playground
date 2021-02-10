@@ -1,4 +1,5 @@
 import { klona } from "klona";
+import { createState, createContext, useContext } from "solid-js";
 
 // actions
 export const BOARD_A_CLICK_SQUARE = "store/board/click_square";
@@ -84,40 +85,57 @@ defaultState = {
   }
 };
 
-export const board = (store) => {
-  store.on("@init", () => klona(defaultState));
+const BoardContext = createContext([{}, {}]);
 
-  store.on(BOARD_A_CLICK_SQUARE, (state, [yIndex, xIndex]) => {
-    let board = klona(state.board),
-        square = board.rows[yIndex][xIndex];
+export const BoardProvider = props => {
+  const [state, setState] = createState(klona(defaultState)),
+    store = [
+      state,
+      {
+        [BOARD_A_CLICK_SQUARE]: (yIndex, xIndex) => {
+          let board = klona(state.board),
+            square = board.rows[yIndex][xIndex];
 
-    if(board.winner === "" && square.player === "") {
-      board.rows[yIndex][xIndex] = { ...square, player: board.currentPlayer };
+          if (board.winner === "" && square.player === "") {
+            board.rows[yIndex][xIndex] = {
+              ...square,
+              player: board.currentPlayer
+            };
 
-      let winCaseFound = checkForWin(board.rows, board.currentPlayer);
-      if(winCaseFound === BOARD_V_DRAW) {
-        board.winner = BOARD_V_DRAW;
-      } else if (Array.isArray(winCaseFound)) {
-        board.winner = board.currentPlayer;
+            let winCaseFound = checkForWin(board.rows, board.currentPlayer);
+            if (winCaseFound === BOARD_V_DRAW) {
+              board.winner = BOARD_V_DRAW;
+            } else if (Array.isArray(winCaseFound)) {
+              board.winner = board.currentPlayer;
 
 
 
-        for(let i = 0; i < winCaseFound.length; i++ ) {
-          const {row, column} = winCaseFound[i];
-          board.rows[row][column].isWinner = 1;
-        }
+              for (let i = 0; i < winCaseFound.length; i++) {
+                const { row, column } = winCaseFound[i];
+                board.rows[row][column].isWinner = 1;
+              }
+            }
+
+            board.currentPlayer = board.currentPlayer === "X" ? "O" : "X";
+          }
+
+          setState({ board });
+        },
+
+        [BOARD_A_RESET]: () => setState({
+          board: {
+            ...klona(defaultState.board),
+            currentPlayer: chooseRandomPlayer()
+          }
+        })
       }
+    ];
 
-      board.currentPlayer = board.currentPlayer === "X" ? "O" : "X";
-    }
-
-    return { board };
-  });
-
-  store.on(BOARD_A_RESET, () => ({
-    board: {
-      ...klona(defaultState.board),
-      currentPlayer: chooseRandomPlayer()
-    }
-  }));
+  return (
+    <BoardContext.Provider value={store}>
+      {props.children}
+    </BoardContext.Provider>
+  );
 };
+
+export const useBoard = () => useContext(BoardContext);

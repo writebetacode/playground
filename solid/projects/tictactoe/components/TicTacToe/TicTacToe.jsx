@@ -1,17 +1,17 @@
-import { StoreonProvider } from "@storeon/solidjs";
-import { store } from "../../store/store";
+import { BoardProvider } from "../../store/board";
 import { Header } from "../Header/Header";
 import { Board } from "../Board/Board";
 import "./TicTacToe.css";
 
+
 export const TicTacToe = () => {
   return (
-    <StoreonProvider store={store}>
+    <BoardProvider >
       <div class="tic-tac-toe">
         <Header />
         <Board />
       </div>
-    </StoreonProvider>
+    </BoardProvider>
   );
 }
 
