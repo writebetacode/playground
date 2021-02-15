@@ -19,7 +19,7 @@
     "history": "^5.0.0",
     "klona": "^2.0.4",
     "regenerator-runtime": "^0.13.7",
-    "solid-js": "^0.24.3"
+    "solid-js": "^0.24.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
@@ -33,9 +33,9 @@
     "nollup": "^0.13.13",
     "open": "^7.4.0",
     "postcss-preset-env": "^6.7.0",
-    "rollup": "^2.38.4",
+    "rollup": "^2.39.0",
     "rollup-plugin-inject-hot-css": "^1.0.4",
-    "rollup-plugin-solid-hot-loader": "^1.5.0",
+    "rollup-plugin-solid-hot-loader": "^1.5.1",
     "rollup-plugin-styles": "^3.14.1",
     "rollup-plugin-terser": "^7.0.2",
     "shx": "^0.3.3"
