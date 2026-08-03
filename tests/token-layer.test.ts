@@ -86,7 +86,7 @@ function contrastBetween(foreground: string, background: string): number {
 	return (lighter + 0.05) / (darker + 0.05);
 }
 
-function valueOf(theme: "light" | "dark", token: string): string {
+function tokenValue(theme: "light" | "dark", token: string): string {
 	const value = tokensFor(theme).get(token);
 	if (value === undefined) {
 		throw new Error(`the ${theme} theme declares no ${token}`);
@@ -137,8 +137,8 @@ describe("body text meets the contrast ratio in both themes", () => {
 		"$label clears 4.5:1 in the $theme theme",
 		({ theme, foreground, background }) => {
 			const ratio = contrastBetween(
-				valueOf(theme, foreground),
-				valueOf(theme, background),
+				tokenValue(theme, foreground),
+				tokenValue(theme, background),
 			);
 
 			expect(ratio).toBeGreaterThanOrEqual(4.5);
@@ -161,8 +161,8 @@ describe("body text meets the contrast ratio in both themes", () => {
 		"the focus ring clears 3:1 against $label in the $theme theme",
 		({ theme, background }) => {
 			const ratio = contrastBetween(
-				valueOf(theme, "--color-focus-ring"),
-				valueOf(theme, background),
+				tokenValue(theme, "--color-focus-ring"),
+				tokenValue(theme, background),
 			);
 
 			expect(ratio).toBeGreaterThanOrEqual(3);
