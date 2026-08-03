@@ -1,0 +1,59 @@
+/**
+ * Design tokens: light theme values on the root, dark theme overrides under the
+ * `data-theme="dark"` attribute the pre-paint script and the theme provider write
+ * on the document element. No component names a colour, spacing, radius, shadow,
+ * or font directly -- every value is read from one of these custom properties.
+ */
+
+:root {
+	color-scheme: light;
+
+	/* Colour */
+	--color-background: #ffffff;
+	--color-surface: #f4f4f5;
+	--color-text: #18181b;
+	--color-text-muted: #52525b;
+	--color-border: #d4d4d8;
+	--color-accent: #2563eb;
+	--color-accent-text: #ffffff;
+	--color-focus-ring: #2563eb;
+
+	/* Spacing */
+	--space-1: 0.25rem;
+	--space-2: 0.5rem;
+	--space-3: 0.75rem;
+	--space-4: 1rem;
+	--space-6: 1.5rem;
+	--space-8: 2rem;
+
+	/* Radius */
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 1rem;
+
+	/* Shadow */
+	--shadow-sm: 0 1px 2px rgb(0 0 0 / 8%);
+	--shadow-md: 0 4px 12px rgb(0 0 0 / 12%);
+
+	/* Typography */
+	--font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+	--font-size-body: 1rem;
+	--font-size-heading: 1.5rem;
+	--line-height-body: 1.5;
+}
+
+[data-theme="dark"] {
+	color-scheme: dark;
+
+	--color-background: #18181b;
+	--color-surface: #27272a;
+	--color-text: #fafafa;
+	--color-text-muted: #a1a1aa;
+	--color-border: #3f3f46;
+	--color-accent: #60a5fa;
+	--color-accent-text: #0b1120;
+	--color-focus-ring: #93c5fd;
+
+	--shadow-sm: 0 1px 2px rgb(0 0 0 / 40%);
+	--shadow-md: 0 4px 12px rgb(0 0 0 / 48%);
+}

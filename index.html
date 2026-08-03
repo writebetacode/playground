@@ -4,6 +4,28 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Playground</title>
+		<script>
+			(() => {
+				const STORAGE_KEY = "playground:theme";
+				let stored = null;
+				try {
+					stored = localStorage.getItem(STORAGE_KEY);
+				} catch (_error) {
+					// Storage is unavailable or refuses reads; fall back to System.
+				}
+				const choice =
+					stored === "light" || stored === "dark" || stored === "system"
+						? stored
+						: "system";
+				const theme =
+					choice === "system"
+						? matchMedia("(prefers-color-scheme: dark)").matches
+							? "dark"
+							: "light"
+						: choice;
+				document.documentElement.setAttribute("data-theme", theme);
+			})();
+		</script>
 	</head>
 	<body>
 		<div id="root"></div>
