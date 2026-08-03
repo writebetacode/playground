@@ -4,6 +4,7 @@ import { createContext, runInContext } from "node:vm";
 import { describe, expect, it } from "vitest";
 import {
 	type AppliedTheme,
+	PREFERS_DARK_QUERY,
 	parseThemeChoice,
 	resolveTheme,
 	THEME_STORAGE_KEY,
@@ -307,5 +308,67 @@ describe("the dark theme the script names is the one the tokens define", () => {
 
 	it.each(selectors)("the token layer declares $label", ({ pattern }) => {
 		expect(tokens()).toMatch(pattern);
+	});
+});
+
+/**
+ * The inline script cannot import anything, so it necessarily restates the storage
+ * key and the media query the runtime layer uses. Restating them is fine; drifting
+ * from them is not, because the drift shows up as the pre-paint theme and the
+ * mounted theme disagreeing -- which is the flash the script exists to prevent.
+ * These cases pin the duplicates to the exported constants and require the runtime
+ * side to import rather than restate them.
+ */
+describe("the pre-paint script and the runtime theme layer agree", () => {
+	const providerPath = `${repositoryRoot}src/app/ThemeProvider.tsx`;
+	const entryPath = `${repositoryRoot}src/main.tsx`;
+
+	function read(path: string): string {
+		return readFileSync(path, "utf8");
+	}
+
+	it("the theme module names the preference query it queries", () => {
+		expect(PREFERS_DARK_QUERY).toMatch(/prefers-color-scheme\s*:\s*dark/);
+	});
+
+	const restated: ReadonlyArray<{ label: string; value: () => string }> = [
+		{ label: "the storage key", value: () => THEME_STORAGE_KEY },
+		{ label: "the preference query", value: () => PREFERS_DARK_QUERY },
+	];
+
+	it.each(restated)(
+		"the inline script restates $label exactly as the module exports it",
+		({ value }) => {
+			expect(prePaintScript().body).toContain(value());
+		},
+	);
+
+	it.each(restated)(
+		"the theme provider imports $label rather than restating it",
+		({ value }) => {
+			expect(read(providerPath)).not.toContain(value());
+		},
+	);
+
+	it("the theme provider reads its constants from the theme module", () => {
+		expect(read(providerPath)).toMatch(/from\s+["'][^"']*lib\/theme["']/);
+	});
+
+	const wiring: ReadonlyArray<{ label: string; pattern: RegExp }> = [
+		{ label: "mounts the theme provider", pattern: /ThemeProvider/ },
+		{
+			label: "loads the global stylesheet",
+			pattern: /import\s+["'][^"']*styles\/global\.css["']/,
+		},
+	];
+
+	it.each(wiring)("the application entry $label", ({ pattern }) => {
+		expect(read(entryPath)).toMatch(pattern);
+	});
+
+	it("the global stylesheet pulls in the token layer", () => {
+		expect(read(`${repositoryRoot}src/styles/global.css`)).toMatch(
+			/@import\s+["'][^"']*tokens\.css["']/,
+		);
 	});
 });
