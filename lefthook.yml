@@ -1,0 +1,10 @@
+pre-commit:
+  jobs:
+    - name: biome check
+      run: pnpm run check
+
+    - name: typecheck
+      run: pnpm run typecheck
+
+    - name: test
+      run: pnpm run test

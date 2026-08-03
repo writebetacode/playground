@@ -57,7 +57,10 @@ describe("the retired prototype is gone", () => {
 		expect(existsSync(join(repositoryRoot, path))).toBe(false);
 	});
 
-	const retiredToolchainFilenames: ReadonlyArray<{ label: string; filename: string }> = [
+	const retiredToolchainFilenames: ReadonlyArray<{
+		label: string;
+		filename: string;
+	}> = [
 		{ label: "Rollup", filename: "rollup.config.js" },
 		{ label: "Rollup", filename: "rollup.config.mjs" },
 		{ label: "Rollup", filename: "rollup.config.ts" },
@@ -90,7 +93,10 @@ describe("the retired prototype is gone", () => {
 
 	it("names the retired experiment in no repository source or document", () => {
 		const matches = listRepositoryFiles()
-			.filter((path) => path.startsWith(planningPrefix) === false && path !== selfPath)
+			.filter(
+				(path) =>
+					path.startsWith(planningPrefix) === false && path !== selfPath,
+			)
 			.filter((path) => {
 				const contents = readFileSync(join(repositoryRoot, path), "utf8");
 				return contents.toLowerCase().includes("colorsays");
@@ -113,7 +119,8 @@ describe("the pinned Node version is picked up automatically", () => {
 	const pinRules: ReadonlyArray<{ label: string; pattern: RegExp }> = [
 		{ label: "holds a single line", pattern: /^[^\n]+\n?$/ },
 		{
-			label: "carries only a version, with no comment or shell decoration fnm would not parse",
+			label:
+				"carries only a version, with no comment or shell decoration fnm would not parse",
 			pattern: /^v?[0-9]+(\.[0-9]+){0,2}\n?$/,
 		},
 		{ label: "pins the Node major to 26", pattern: /^v?26(\.[0-9]+){0,2}\n?$/ },
