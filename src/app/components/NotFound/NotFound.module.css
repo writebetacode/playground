@@ -1,0 +1,23 @@
+.notFound {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--space-3);
+	padding: var(--space-8) 0;
+}
+
+.heading {
+	margin: 0;
+	font-size: var(--font-size-heading);
+}
+
+.message {
+	margin: 0;
+	max-width: 48ch;
+	color: var(--color-text-muted);
+}
+
+.back {
+	border-radius: var(--radius-sm);
+	color: var(--color-accent);
+}

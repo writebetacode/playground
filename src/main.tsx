@@ -1,13 +1,15 @@
+import { Router } from "@solidjs/router";
 import { render } from "solid-js/web";
-import { ThemeControl } from "./app/components/ThemeControl/ThemeControl";
+import { AppShell } from "./app/AppShell";
+import { buildRoutes } from "./app/routes";
 import { ThemeProvider } from "./app/ThemeProvider";
+import { apps } from "./apps/registry";
 import "./styles/global.css";
 
 function App() {
 	return (
 		<ThemeProvider>
-			<ThemeControl />
-			<p>Playground</p>
+			<Router root={AppShell}>{buildRoutes(apps)}</Router>
 		</ThemeProvider>
 	);
 }
