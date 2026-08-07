@@ -20,8 +20,18 @@ export type AppDefinition = {
 	readonly load: () => Promise<{ default: Component }>;
 };
 
-/** Every registered app. Tic-tac-toe arrives in the next task. */
-export const apps: readonly AppDefinition[] = [];
+/** Every registered app. One entry per folder under `src/apps/`. */
+export const apps: readonly AppDefinition[] = [
+	{
+		id: "tictactoe",
+		name: "Tic Tac Toe",
+		description:
+			"The classic three-in-a-row game, with a random starting player and a board built from CSS grid.",
+		tags: ["solid", "css grid", "stores"],
+		sourcePath: "src/apps/tictactoe",
+		load: () => import("./tictactoe/TicTacToe"),
+	},
+];
 
 /** The app registered under an id, or nothing when no entry claims it. */
 export function findAppById(

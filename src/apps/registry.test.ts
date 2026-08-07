@@ -33,9 +33,57 @@ const registry: readonly AppDefinition[] = [
 	defineApp("colour-lab", "src/apps/colour-lab"),
 ];
 
-describe("the registry ships empty until an app is added", () => {
-	it("lists no app yet", () => {
-		expect(apps).toEqual([]);
+describe("tic-tac-toe is listed in the app registry", () => {
+	const entry = () => findAppById(apps, "tictactoe");
+
+	it("registers the app under its route segment", () => {
+		expect(entry()).toBeDefined();
+	});
+
+	const fields: ReadonlyArray<{ field: keyof AppDefinition; value: string }> = [
+		{ field: "id", value: "tictactoe" },
+		{ field: "name", value: "Tic Tac Toe" },
+		{ field: "sourcePath", value: "src/apps/tictactoe" },
+	];
+
+	it.each(fields)("declares $field as $value", ({ field, value }) => {
+		expect(entry()?.[field]).toBe(value);
+	});
+
+	it("describes itself for the selector card", () => {
+		expect(entry()?.description.length).toBeGreaterThan(0);
+		expect(entry()?.tags.length).toBeGreaterThan(0);
+	});
+
+	it("registers every app under a distinct id", () => {
+		const ids = apps.map((app) => app.id);
+
+		expect(ids).toEqual([...new Set(ids)]);
+	});
+});
+
+describe("the header names the open app", () => {
+	const locations: ReadonlyArray<{
+		label: string;
+		pathname: string;
+		name: string | undefined;
+	}> = [
+		{
+			label: "the app's own path",
+			pathname: "/tictactoe",
+			name: "Tic Tac Toe",
+		},
+		{
+			label: "a path below the app",
+			pathname: "/tictactoe/anything",
+			name: "Tic Tac Toe",
+		},
+		{ label: "the site root", pathname: "/", name: undefined },
+		{ label: "an unknown path", pathname: "/nowhere", name: undefined },
+	];
+
+	it.each(locations)("$label reads as $name", ({ pathname, name }) => {
+		expect(findAppForPath(apps, pathname)?.name).toBe(name);
 	});
 });
 

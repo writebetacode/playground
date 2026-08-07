@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { apps } from "../apps/registry";
 import { buildSourceUrl, DEFAULT_BRANCH, REPOSITORY_URL } from "./source-url";
 
 /**
@@ -38,6 +39,26 @@ describe("the source link points at the repository when no app is open", () => {
 
 	it("names the branch the links resolve against", () => {
 		expect(DEFAULT_BRANCH).toBe("main");
+	});
+});
+
+describe("the source link retargets to the open app", () => {
+	it.each(apps.map((app) => ({ id: app.id, sourcePath: app.sourcePath })))(
+		"$id resolves to its own folder on the default branch",
+		({ sourcePath }) => {
+			expect(buildSourceUrl(sourcePath)).toBe(
+				`${REPOSITORY_URL}/tree/${DEFAULT_BRANCH}/${sourcePath}`,
+			);
+		},
+	);
+
+	it("sends tic-tac-toe to its own folder rather than the repository root", () => {
+		const tictactoe = apps.find((app) => app.id === "tictactoe");
+
+		expect(buildSourceUrl(tictactoe?.sourcePath)).toBe(
+			"https://github.com/writebetacode/playground/tree/main/src/apps/tictactoe",
+		);
+		expect(buildSourceUrl(tictactoe?.sourcePath)).not.toBe(REPOSITORY_URL);
 	});
 });
 
