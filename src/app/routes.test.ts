@@ -1,6 +1,6 @@
 import type { Component } from "solid-js";
 import { describe, expect, it, vi } from "vitest";
-import type { AppDefinition } from "../apps/registry";
+import { type AppDefinition, apps } from "../apps/registry";
 
 /**
  * Route building is a pure function of the registry: a list of plain values in, a
@@ -104,6 +104,31 @@ describe("an unknown path falls through to the not-found screen", () => {
 describe("the site root renders the selector", () => {
 	it("answers the root path with the app list", () => {
 		expect(buildRoutes([]).at(0)?.component).toBe(AppList);
+	});
+});
+
+describe("a registered app is reachable at its own path", () => {
+	it("generates a route for tic-tac-toe from the shipped registry", () => {
+		const paths = buildRoutes(apps).map((route) => route.path);
+
+		expect(paths).toContain("/tictactoe");
+	});
+
+	it("keeps the selector and the catch-all around it", () => {
+		const paths = buildRoutes(apps).map((route) => route.path);
+
+		expect(paths.at(0)).toBe("/");
+		expect(paths.at(-1)).toBe("*");
+	});
+
+	it("answers that path with a component of its own", () => {
+		const route = buildRoutes(apps).find(
+			(candidate) => candidate.path === "/tictactoe",
+		);
+
+		expect(route?.component).toBeDefined();
+		expect(route?.component).not.toBe(AppList);
+		expect(route?.component).not.toBe(NotFound);
 	});
 });
 
