@@ -1,0 +1,13 @@
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding: var(--space-4) 0;
+	border-top: 1px solid var(--color-border);
+	color: var(--color-text-muted);
+}
+
+.source {
+	border-radius: var(--radius-sm);
+	color: var(--color-accent);
+}
